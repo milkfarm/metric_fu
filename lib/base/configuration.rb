@@ -5,13 +5,12 @@ module MetricFu
   # These are metrics which have been developed for the system.  Of
   # course, in order to use these metrics, their respective gems must
   # be installed on the system.
-  AVAILABLE_METRICS = [:churn, :flog, :flay, :reek,
-                       :roodi, :rcov,
-                      :hotspots]
+  AVAILABLE_METRICS = [:churn, :flog, :flay, :reek, :roodi, :hotspots]
 
-  AVAILABLE_METRICS << :saikuro unless RUBY_VERSION == '1.9.2'
+  AVAILABLE_METRICS << [:saikuro, :rcov] unless RUBY_VERSION >= '1.9.2'
 
-  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rcov, :rails_best_practices]
+  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rails_best_practices]
+  AVAILABLE_GRAPHS << :rcov unless RUBY_VERSION >= '1.9.2'
   AVAILABLE_GRAPH_ENGINES = [:gchart, :bluff]
 
   # The @@configuration class variable holds a global type configuration
